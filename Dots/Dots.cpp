@@ -1,55 +1,55 @@
-#include "Dots.h"
+п»ї#include "Dots.h"
 using namespace std;
 
-/* Реализация класса */
+/* Р РµР°Р»РёР·Р°С†РёСЏ РєР»Р°СЃСЃР° dots */
 
-/* Задание мерности пространства */
-inline void dots::set_dimension(int _n)
-{
-	n = _n;
-}
-
-/* Задание модуля рандомизации */
-inline void dots::set_rand(int _border)
-{
-	rand_border = _border;
-}
-
-/* Изменить координату в векторе */
-inline void dots::set_coordinates(int _pos, double _value)
+/* РР·РјРµРЅРёС‚СЊ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РІ РІРµРєС‚РѕСЂРµ */
+void dots::set_coordinates(int _pos, double _value)
 {
 	coordinates[_pos] = _value;
 }
 
-/* Заполнить вектор */
-inline void dots::fill_coordinates(double _value)
+/* Р”РѕР±Р°РІРёС‚СЊ РІ РІРµРєС‚РѕСЂ */
+void dots::add_coordinates(double _value)
 {
-	coordinates.push_back(_value);
+	if (coordinates.size() < n)
+	{
+		coordinates.push_back(_value);
+	}
 }
 
-/* Вернуть мерность пространства */
-inline int dots::get_n()
+/* Р’РµСЂРЅСѓС‚СЊ РјРµСЂРЅРѕСЃС‚СЊ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° */
+int dots::get_n()
 {
 	return n;
 }
 
-/* Ввод с клавиатуры вектора */
-inline void dots::cin_input()
+/* Р’РІРѕРґ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ РІРµРєС‚РѕСЂР° */
+void dots::cin_input()
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < coordinates.size(); i++)
 	{
 		double temp;
 		cin >> temp;
-		coordinates.push_back(temp);
+		coordinates[i] = temp;
 	}
 }
 
-/* Рандомизация вектора */
-inline void dots::randomize()
+/* Р Р°РЅРґРѕРјРёР·Р°С†РёСЏ РІРµРєС‚РѕСЂР° */
+void dots::randomize(int _seed)
 {
-	srand(time(0));
-	for (int i = 0; i < n; i++)
+	srand(time(0) + _seed);
+	for (int i = 0; i < coordinates.size(); i++)
 	{
-		coordinates.push_back(rand() % rand_border);
+		coordinates[i] = rand() % rand_border;
+	}
+}
+
+/* РћС‚РѕР±СЂР°Р·РёС‚СЊ С‚РµРєСѓС‰РёР№ РІРµРєС‚РѕСЂ */
+void dots::show_coordinates()
+{
+	for (int i = 0; i < coordinates.size(); i++)
+	{
+		cout << coordinates[i] << " ";
 	}
 }
