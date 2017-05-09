@@ -48,8 +48,11 @@ void dots::randomize(int _seed)
 /* Отобразить текущий вектор */
 void dots::show_coordinates()
 {
-	for (int i = 0; i < coordinates.size(); i++)
+	cout << "(";
+	for (int i = 0; i < coordinates.size() - 1; i++)
 	{
-		cout << coordinates[i] << " ";
+		cout << coordinates[i] << "; ";
 	}
+	cout << coordinates[coordinates.size() - 1];
+	cout << ")";
 }

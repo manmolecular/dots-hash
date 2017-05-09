@@ -144,11 +144,13 @@
   <ItemGroup>
     <ClCompile Include="Dots.cpp" />
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="Hash_table.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dots.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Hash_table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

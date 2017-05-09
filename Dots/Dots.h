@@ -15,6 +15,10 @@ class dots
 		static int n;
 		static int rand_border;
 	public:
+		bool operator==(const dots &rhs)
+		{
+			return (this->coordinates == rhs.coordinates);
+		};
 		dots() : coordinates(n) {};
 		static void set_dimension(int _n) {n = _n;};
 		static void set_rand(int _border) {rand_border = _border;};
