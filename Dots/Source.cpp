@@ -15,7 +15,7 @@ int dots::rand_border = 0;
 int hash_table::_table_size = _size;
 const int field::f_size = _size;
 
-void hash_search(dots _temp)
+void hash_search()
 {
 	/* Начальные объявления */
 	dots temp;
@@ -29,6 +29,7 @@ void hash_search(dots _temp)
 	my_table.get_random_table();
 
 	/* Добавление в таблицу */
+	temp.randomize(42);
 	my_table.push(temp);
 	my_table.push(temp);
 	if (_show)
@@ -64,8 +65,7 @@ int main()
 	clock_t start, end;
 
 	/* Поиск точки в пространстве */
-	srand(time(NULL));
-	dots temp = my_field.return_dot(rand() % _size);
+	dots temp = my_field.return_dot(5);
 	int _pos = 0;
 	start = clock();
 	cout << endl << boolalpha << "Search: " << my_field.search(temp, &_pos) << endl;
@@ -76,12 +76,12 @@ int main()
 	cout << "Runtime: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << "s" << endl;
 
 	/* Поиск для 100к элементов */
-	hash_search(temp);
+	hash_search();
 
 	hash_table::set_size(_size * 2);
 
 	/* Поиск для 200к элементов */
-	hash_search(temp);
+	hash_search();
 
 	return 0;
 }
