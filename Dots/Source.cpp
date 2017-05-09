@@ -1,10 +1,10 @@
 ﻿#include "Dots.h"
 #include "Field.h"
 #include "Hash_table.h"
-#define _size 10
+#define _size 100000
 #define _n 10
 #define _rand_border 1000
-#define _show true
+#define _show false
 using namespace std;
 
 /* Реализация */ 
@@ -12,8 +12,40 @@ using namespace std;
 /* Инициализация static-переменных*/
 int dots::n = 0;
 int dots::rand_border = 0;
-int hash_table::_table_size = 10;
+int hash_table::_table_size = _size;
 const int field::f_size = _size;
+
+void hash_search()
+{
+	/* Начальные объявления */
+	dots temp;
+	int _pos = 0;
+
+	/* Инициализация времени для подсчета скорости поиска */
+	clock_t start, end;
+
+	/* Хеш-таблица с рандомными значениями */
+	hash_table my_table;
+	my_table.get_random_table();
+
+	/* Добавление в таблицу */
+	temp.randomize(42);
+	my_table.push(temp);
+	my_table.push(temp);
+	if (_show)
+	{
+		my_table.show();
+	}
+
+	/* Поиск точки по её хешу */
+	start = clock();
+	cout << endl << boolalpha << "Search: " << my_table.search(temp, &_pos) << endl;
+	cout << "Position is: " << _pos << endl;
+	end = clock();
+
+	/* Результат по времени*/
+	cout << "Runtime: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << "s" << endl;
+}
 
 int main()
 {
@@ -43,11 +75,13 @@ int main()
 	/* Результат по времени*/
 	cout << "Runtime: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << "s" << endl;
 
-	/* Хеш-таблица */
-	hash_table my_table;
-	temp.randomize(1);
-	my_table.push(temp);
-	my_table.push(temp);
-	my_table.show();
+	/* Поиск для 100к элементов */
+	hash_search();
+
+	hash_table::set_size(_size * 2);
+
+	/* Поиск для 200к элементов */
+	hash_search();
+
 	return 0;
 }

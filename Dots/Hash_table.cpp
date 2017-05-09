@@ -5,6 +5,42 @@
 #include <cstddef>
 using namespace std;
 
+/* Заполнение таблицы рандомными значениями */
+void hash_table::get_random_table()
+{
+	for (int i = 0; i < _table_size; i++)
+	{
+		_dot = &table[i];
+		_dot->randomize(i);
+	}
+}
+
+/* Поиск по хешу в таблице */
+bool hash_table::search(dots _temp, int *_pos)
+{
+	bool _stop = false;
+
+	int hash_num = _hash(_temp);
+	_dot = &table[hash_num];
+	if (_temp == *_dot)
+	{
+		*_pos = hash_num;
+		_stop = true;
+		return true;
+	}
+	while (!(*_dot == _temp))
+	{
+		if (!(_dot->next))
+		{
+			cout << "Not found" << endl;
+			break;
+		}
+		_dot = _dot->next;
+	}
+	return false;
+}
+
+/* Конструктор */
 hash_table::hash_table()
 {
 	table = new dots[_table_size];
@@ -16,6 +52,7 @@ hash_table::hash_table()
 	}
 }
 
+/* Добавление элемента в таблицу */
 void hash_table::push(dots _temp)
 {
 	int hash_num = _hash(_temp);
@@ -33,6 +70,7 @@ void hash_table::push(dots _temp)
 	_dot->next = &_temp;
 }
 
+/* Вычисление хеша */
 int hash_table::_hash(dots _temp)
 {
 	string _str = convert(_temp);
@@ -42,6 +80,7 @@ int hash_table::_hash(dots _temp)
 	return hash;
 }
 
+/* Конвертация из vector в string */
 string hash_table::convert(dots _temp)
 {
 	string _str;
@@ -56,6 +95,7 @@ string hash_table::convert(dots _temp)
 	}
 }
 
+/* Вывод */
 void hash_table::show()
 {
 	for (int i = 0; i < _table_size; i++)

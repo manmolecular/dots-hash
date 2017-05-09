@@ -3,7 +3,6 @@
 using namespace std;
 
 /* Хэш-таблица с методом цепочек */
-/* Key - сумма всех координат в векторе */
 
 class hash_table
 {
@@ -14,8 +13,11 @@ class hash_table
 		static int _table_size;
 	public:
 		hash_table();
+		static void set_size(int _n) { _table_size = _n; };
 		void push(dots _temp);
 		int _hash(dots _temp);
 		string convert(dots _temp);
 		void show();
+		bool search(dots _temp, int *_pos);
+		void get_random_table();
 };
