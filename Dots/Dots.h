@@ -9,17 +9,23 @@ using namespace std;
 class dots
 {
 	private:
-		vector <double> coordinates;
 		friend class field;
+		friend class hash_table;
 	protected:
+		bool empty;
 		static int n;
 		static int rand_border;
+		vector <double> coordinates;
+		dots* next;
 	public:
 		bool operator==(const dots &rhs)
 		{
 			return (this->coordinates == rhs.coordinates);
 		};
-		dots() : coordinates(n) {};
+		dots() : coordinates(n) 
+		{
+			this->next = NULL;
+		};
 		static void set_dimension(int _n) {n = _n;};
 		static void set_rand(int _border) {rand_border = _border;};
 		void add_coordinates(double _value);

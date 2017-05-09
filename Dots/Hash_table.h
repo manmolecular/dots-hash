@@ -1,6 +1,5 @@
 #pragma once
 #include "Dots.h"
-#define _table_size 100000
 using namespace std;
 
 /* Хэш-таблица с методом цепочек */
@@ -9,12 +8,14 @@ using namespace std;
 class hash_table
 {
 	private:
-		dots *table[_table_size];
-		int key;
-		int value;
-		hash_table *next;
+		dots *table;
+		dots *_dot;
+	protected:
+		static int _table_size;
 	public:
 		hash_table();
-		~hash_table();
-		void push(int key, int value);
+		void push(dots _temp);
+		int _hash(dots _temp);
+		string convert(dots _temp);
+		void show();
 };

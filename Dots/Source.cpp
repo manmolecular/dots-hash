@@ -1,7 +1,7 @@
 ﻿#include "Dots.h"
 #include "Field.h"
 #include "Hash_table.h"
-#define _size 100
+#define _size 10
 #define _n 10
 #define _rand_border 1000
 #define _show true
@@ -12,6 +12,7 @@ using namespace std;
 /* Инициализация static-переменных*/
 int dots::n = 0;
 int dots::rand_border = 0;
+int hash_table::_table_size = 10;
 const int field::f_size = _size;
 
 int main()
@@ -42,5 +43,11 @@ int main()
 	/* Результат по времени*/
 	cout << "Runtime: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << "s" << endl;
 
+	/* Хеш-таблица */
+	hash_table my_table;
+	temp.randomize(1);
+	my_table.push(temp);
+	my_table.push(temp);
+	my_table.show();
 	return 0;
 }
