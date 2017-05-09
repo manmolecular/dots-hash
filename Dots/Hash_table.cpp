@@ -1,11 +1,11 @@
-#include "Hash_table.h"
+п»ї#include "Hash_table.h"
 #include <functional>
 #include <sstream>
 #include <iterator>
 #include <cstddef>
 using namespace std;
 
-/* Заполнение таблицы рандомными значениями */
+/* Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ СЂР°РЅРґРѕРјРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё */
 void hash_table::get_random_table()
 {
 	for (int i = 0; i < _table_size; i++)
@@ -15,7 +15,7 @@ void hash_table::get_random_table()
 	}
 }
 
-/* Поиск по хешу в таблице */
+/* РџРѕРёСЃРє РїРѕ С…РµС€Сѓ РІ С‚Р°Р±Р»РёС†Рµ */
 bool hash_table::search(dots _temp, int *_pos)
 {
 	bool _stop = false;
@@ -40,7 +40,7 @@ bool hash_table::search(dots _temp, int *_pos)
 	return false;
 }
 
-/* Конструктор */
+/* РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ */
 hash_table::hash_table()
 {
 	table = new dots[_table_size];
@@ -52,7 +52,7 @@ hash_table::hash_table()
 	}
 }
 
-/* Добавление элемента в таблицу */
+/* Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ С‚Р°Р±Р»РёС†Сѓ */
 void hash_table::push(dots _temp)
 {
 	int hash_num = _hash(_temp);
@@ -70,7 +70,7 @@ void hash_table::push(dots _temp)
 	_dot->next = &_temp;
 }
 
-/* Вычисление хеша */
+/* Р’С‹С‡РёСЃР»РµРЅРёРµ С…РµС€Р° */
 int hash_table::_hash(dots _temp)
 {
 	string _str = convert(_temp);
@@ -80,7 +80,7 @@ int hash_table::_hash(dots _temp)
 	return hash;
 }
 
-/* Конвертация из vector в string */
+/* РљРѕРЅРІРµСЂС‚Р°С†РёСЏ РёР· vector РІ string */
 string hash_table::convert(dots _temp)
 {
 	string _str;
@@ -95,7 +95,7 @@ string hash_table::convert(dots _temp)
 	}
 }
 
-/* Вывод */
+/* Р’С‹РІРѕРґ */
 void hash_table::show()
 {
 	for (int i = 0; i < _table_size; i++)

@@ -1,8 +1,8 @@
-#pragma once
+п»ї#pragma once
 #include "Dots.h"
 using namespace std;
 
-/* Хэш-таблица с методом цепочек */
+/* РҐСЌС€-С‚Р°Р±Р»РёС†Р° СЃ РјРµС‚РѕРґРѕРј С†РµРїРѕС‡РµРє */
 
 class hash_table
 {
