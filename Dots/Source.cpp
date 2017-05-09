@@ -63,9 +63,11 @@ int main()
 	/* Инициализация времени для подсчета скорости поиска */
 	clock_t start, end;
 
-	/* Поиск точки в пространстве */
+	/* Рандомизация точки поиска */
 	srand(time(NULL));
 	dots temp = my_field.return_dot(rand() % _size);
+
+	/* Поиск точки в пространстве */
 	int _pos = 0;
 	start = clock();
 	cout << endl << boolalpha << "Search: " << my_field.search(temp, &_pos) << endl;
