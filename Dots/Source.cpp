@@ -15,6 +15,7 @@ int dots::rand_border = 0;
 int hash_table::_table_size = _size;
 const int field::f_size = _size;
 
+/* Поиск по хеш-таблице */
 void hash_search(dots _temp)
 {
 	/* Начальные объявления */
@@ -80,6 +81,7 @@ int main()
 	/* Поиск для 100к элементов */
 	hash_search(temp);
 
+	/* Увеличение хеш-таблицы в два раза */
 	hash_table::set_size(_size * 2);
 
 	/* Поиск для 200к элементов */
